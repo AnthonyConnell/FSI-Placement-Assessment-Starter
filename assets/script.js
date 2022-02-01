@@ -1,27 +1,125 @@
-// HINT: You can delete this console.log after you no longer need it!
-console.log('JavaScript code has loaded!')
-// First, tell us your name
-let yourName = "Jane Doe" // HINT: Replace this with your own name!
-
-// We'll use these variables to track the counts of each cookie type
+let yourName = "Anthony Connell"
+let quantityGb = document.getElementById("qty-gb")
+let quantityCc= document.getElementById("qty-cc")
+let quantitySugar = document.getElementById("qty-sugar")
+let quantityTotal = document.getElementById("qty-total")
 let gb = 0 // Gingerbread
 let cc = 0 // Chocolate Chip
 let sugar = 0 // Sugar Sprinkle
+let total = 0
 
-// selecting the element with an id of credit
-const credit = document.querySelector('#credit')
-// selecting the element with an id of add-gb
-const gbPlusBtn = document.querySelector('#add-gb')
+const credit = document.querySelector("#credit")
+const gbPlusBtn = document.getElementById("add-gb")
+const gbDecreaseBtn = document.getElementById("minus-gb")
+const ccPlusBtn = document.getElementById("add-cc")
+const ccDecreaseBtn = document.getElementById("minus-cc")
+const sugarPlusBtn = document.getElementById("add-sugar")
+const sugarDecreaseBtn = document.getElementById("minus-sugar")
 
-// Code to update name display
-credit.textContent = `Created by ${yourName}`
+credit.textContent = `"Created by ${yourName}"`
 
-// Event listener for clicks on the "+" button for Gingerbread cookies
-gbPlusBtn.addEventListener('click', function() {
-// HINT: You can delete this console.log after you no longer need it!
-console.log('Gingerbread + button was clicked!')
-
-// TODO: Write the code to be run when the "+" button for "Gingerbread" is clicked
+gbPlusBtn.addEventListener('click', function(){
+        gb++
+        quantityTotal++
+        updateGb(`${gb}`)
+    console.log("gb", gb)
 })
 
-// TODO: Hook up event listeners for the rest of the buttons
+gbPlusBtn.addEventListener('click', function(){
+        total++
+        updateTotal(`${total}`)
+    console.log(total)
+})
+
+gbDecreaseBtn.addEventListener("click", function(){
+    if(gb > 0){
+        gb--
+    } 
+        updateGb(`${gb}`)
+        console.log("gb", gb)
+})
+gbDecreaseBtn.addEventListener("click", function(){
+    if(total > 0){
+        total--
+    } 
+        updateTotal(`${total}`)
+        console.log(total)
+})
+
+function updateGb(displayQuantityGb) {
+    let quantityGb = document.getElementById("qty-gb")
+    quantityGb.innerHTML = displayQuantityGb
+}
+
+ccPlusBtn.addEventListener('click', function(){
+        cc++
+        updateCc(`${cc}`)
+    console.log("choc chip", cc)
+})
+
+ccPlusBtn.addEventListener('click', function(){
+    total++
+    updateTotal(`${total}`)
+console.log(total)
+})
+
+ccDecreaseBtn.addEventListener("click", function(){
+    if(cc > 0){
+        cc--
+    } 
+        updateCc(`${cc}`)
+        console.log("choc chip",cc)
+})
+
+ccDecreaseBtn.addEventListener("click", function(){
+    if(total > 0){
+        total--
+    } 
+        updateTotal(`${total}`)
+        console.log(total)
+})
+
+function updateCc(displayQuantityCc) {
+    let quantityCc = document.getElementById("qty-cc")
+    quantityCc.innerHTML = displayQuantityCc
+}
+
+sugarPlusBtn.addEventListener('click', function(){
+        sugar++
+        quantityTotal++
+        updateSugar(`${sugar}`)
+    console.log("sugar", sugar)
+})
+
+sugarPlusBtn.addEventListener('click', function(){
+    total++
+    updateTotal(`${total}`)
+console.log(total)
+})
+
+sugarDecreaseBtn.addEventListener("click", function(){
+    if(sugar > 0){
+        sugar--
+        quantityTotal--
+    } 
+        updateSugar(`${sugar}`)
+        console.log("sugar", sugar)
+})
+
+sugarDecreaseBtn.addEventListener("click", function(){
+    if(total > 0){
+        total--
+    } 
+        updateTotal(`${total}`)
+        console.log(total)
+})
+
+function updateSugar(displayQuantitySugar) {
+    let quantitySugar = document.getElementById("qty-sugar")
+    quantitySugar.innerHTML = displayQuantitySugar
+}
+
+function updateTotal(displayQuantityTotal){
+    let quantityTotal = document.getElementById("qty-total")
+    quantityTotal.innerHTML = displayQuantityTotal
+}
